@@ -4,7 +4,10 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+<<<<<<< HEAD
 use Symfony\Component\Validator\Constraints as Assert;
+=======
+>>>>>>> 840744047a663cdd10c4b663797b86c8486c68e4
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -21,7 +24,10 @@ class Product
     private ?float $price = null;
 
     #[ORM\Column(length: 255)]
+<<<<<<< HEAD
     #[Assert\Choice(choices: ['vêtement', 'basket'], message: 'Le type doit être soit "vêtement" soit "basket".')]
+=======
+>>>>>>> 840744047a663cdd10c4b663797b86c8486c68e4
     private ?string $type = null;
 
     #[ORM\Column]
