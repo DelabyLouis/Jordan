@@ -5,12 +5,10 @@
 {% block body %}
 <div class="container-fluid">
     <!-- Header Section -->
-    <div class="hero-section">
-        <div class="container">
-            <h1>Bienvenue dans notre boutique</h1>
-            <p>Découvrez notre collection de vêtements et baskets tendance</p>
-        </div>
-    </div>
+    {% include 'partials/_hero.html.twig' with {
+        'hero_title': 'Bienvenue dans notre boutique',
+        'hero_subtitle': 'Découvrez notre collection de vêtements et baskets tendance'
+    } %}
 
     <div class="container">
         <!-- Filter Section -->
@@ -59,27 +57,20 @@
                 {% endfor %}
             </div>
         {% else %}
-            <div class="empty-cart">
-                <h3>Aucun produit trouvé</h3>
-                <p>Essayez de modifier vos filtres ou revenez plus tard.</p>
-                <a href="{{ path('app_home') }}" class="btn btn-red">Voir tous les produits</a>
-            </div>
+            {% include 'partials/_empty_state.html.twig' with {
+                'empty_title': 'Aucun produit trouvé',
+                'empty_message': 'Essayez de modifier vos filtres ou revenez plus tard.',
+                'empty_link_url': path('app_home'),
+                'empty_link_text': 'Voir tous les produits'
+            } %}
         {% endif %}
     </div>
 </div>
 
 <!-- Toast notification pour ajout panier -->
-<div class="toast-container">
-    <div id="cartToast" class="toast">
-        <div class="toast-header">
-            <strong>Panier</strong>
-            <button type="button" class="toast-close" onclick="hideToast()">&times;</button>
-        </div>
-        <div class="toast-body" id="toastMessage">
-            Produit ajouté au panier avec succès !
-        </div>
-    </div>
-</div>
+{% include 'partials/_toast.html.twig' with {
+    'toast_message': 'Produit ajouté au panier avec succès !'
+} %}
 {% endblock %}
 
 {% block javascripts %}
@@ -137,16 +128,6 @@
             });
         });
         
-        function showToast(message) {
-            document.getElementById('toastMessage').textContent = message;
-            document.getElementById('cartToast').classList.add('show');
-            setTimeout(() => {
-                document.getElementById('cartToast').classList.remove('show');
-            }, 3000);
-        }
-        
-        function hideToast() {
-            document.getElementById('cartToast').classList.remove('show');
-        }
+        {% include 'partials/_toast_script.html.twig' %}
     </script>
 {% endblock %}

@@ -1,0 +1,12 @@
+{# Toast notification partial #}
+<div class="toast-container">
+    <div id="cartToast" class="toast">
+        <div class="toast-header">
+            <strong>{{ toast_title|default('Panier') }}</strong>
+            <button type="button" class="toast-close" onclick="hideToast()">&times;</button>
+        </div>
+        <div class="toast-body" id="toastMessage">
+            {{ toast_message|default('') }}
+        </div>
+    </div>
+</div>

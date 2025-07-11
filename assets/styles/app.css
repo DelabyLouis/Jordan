@@ -137,7 +137,7 @@ a:hover {
 
 /* Cards */
 .card {
-    border: 1px solid #ddd;
+    border: 1px solid #ced4da;
     padding: 1rem;
     margin-bottom: 2rem;
 }
@@ -151,7 +151,7 @@ a:hover {
 }
 
 .product-card {
-    border: 1px solid #ddd;
+    border: 1px solid #ced4da;
     padding: 1.5rem;
     background: #ffffff;
 }
@@ -163,7 +163,7 @@ a:hover {
 
 .product-card p {
     margin-bottom: 1rem;
-    color: #6c757d;
+    color: #495057;
 }
 
 .product-price {
@@ -175,12 +175,12 @@ a:hover {
 
 .image-placeholder {
     height: 200px;
-    background: #f8f9fa;
+    background: #e9ecef;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    color: #6c757d;
+    color: #495057;
     font-size: 2rem;
 }
 
@@ -200,7 +200,7 @@ a:hover {
 }
 
 .hero-section p {
-    color: #f8f9fa;
+    color: #e9ecef;
     font-size: 1.2rem;
 }
 
@@ -275,7 +275,7 @@ section {
     align-items: center;
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ced4da;
 }
 
 .toast-close {
@@ -292,7 +292,7 @@ section {
 
 .cart-item {
     background: #ffffff;
-    border: 1px solid #ddd;
+    border: 1px solid #ced4da;
     padding: 1.5rem;
     margin-bottom: 1rem;
 }
@@ -352,9 +352,9 @@ section {
 }
 
 .cart-summary {
-    background: #f8f9fa;
+    background: #e9ecef;
     padding: 2rem;
-    border: 1px solid #ddd;
+    border: 1px solid #ced4da;
 }
 
 .cart-actions {
@@ -408,7 +408,7 @@ section {
 
 .empty-cart p {
     margin-bottom: 2rem;
-    color: #6c757d;
+    color: #495057;
     font-size: 1.1rem;
 }
 

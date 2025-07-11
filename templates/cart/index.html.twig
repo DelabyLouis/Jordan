@@ -4,10 +4,10 @@
 
 {% block body %}
 <div class="container">
-    <div class="hero-section">
-        <h1>Mon Panier</h1>
-        <p>Récapitulatif de vos achats</p>
-    </div>
+    {% include 'partials/_hero.html.twig' with {
+        'hero_title': 'Mon Panier',
+        'hero_subtitle': 'Récapitulatif de vos achats'
+    } %}
 
     {% if cart.cartItems|length > 0 %}
         <div class="cart-items">
@@ -46,25 +46,17 @@
                 <a href="{{ path('app_home') }}" class="btn">Continuer les achats</a>
             </div>
         </div>        {% else %}
-            <div class="empty-cart">
-                <h3>Votre panier est vide</h3>
-                <p>Ajoutez des produits pour commencer vos achats</p>
-                <a href="{{ path('app_home') }}" class="btn btn-red">Voir les produits</a>
-            </div>
+            {% include 'partials/_empty_state.html.twig' with {
+                'empty_title': 'Votre panier est vide',
+                'empty_message': 'Ajoutez des produits pour commencer vos achats',
+                'empty_link_url': path('app_home'),
+                'empty_link_text': 'Voir les produits'
+            } %}
         {% endif %}
 </div>
 
 <!-- Toast notification -->
-<div class="toast-container">
-    <div id="cartToast" class="toast">
-        <div class="toast-header">
-            <strong>Panier</strong>
-            <button type="button" class="toast-close" onclick="hideToast()">&times;</button>
-        </div>
-        <div class="toast-body" id="toastMessage">
-        </div>
-    </div>
-</div>
+{% include 'partials/_toast.html.twig' %}
 {% endblock %}
 
 {% block javascripts %}
@@ -120,16 +112,6 @@
             alert('Fonctionnalité de paiement à implémenter');
         }
 
-        function showToast(message) {
-            document.getElementById('toastMessage').textContent = message;
-            document.getElementById('cartToast').classList.add('show');
-            setTimeout(() => {
-                document.getElementById('cartToast').classList.remove('show');
-            }, 3000);
-        }
-
-        function hideToast() {
-            document.getElementById('cartToast').classList.remove('show');
-        }
+        {% include 'partials/_toast_script.html.twig' %}
     </script>
 {% endblock %}

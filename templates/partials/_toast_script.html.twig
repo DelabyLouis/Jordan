@@ -1,0 +1,12 @@
+{# Toast JavaScript partial - Functions only, no script tags #}
+function showToast(message) {
+    document.getElementById('toastMessage').textContent = message;
+    document.getElementById('cartToast').classList.add('show');
+    setTimeout(() => {
+        document.getElementById('cartToast').classList.remove('show');
+    }, 3000);
+}
+
+function hideToast() {
+    document.getElementById('cartToast').classList.remove('show');
+}
