@@ -1,3 +1,481 @@
+/* Reset et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: skyblue;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #000000;
+    background: #ffffff;
+}
+
+/* Typographie */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Liens */
+a {
+    color: #dc143c;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000000;
+}
+
+/* Container responsive */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Grid responsive */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+/* Navigation */
+.navbar {
+    background: #000000;
+    padding: 1rem 0;
+    border-bottom: 2px solid #dc143c;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: #dc143c;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+    color: #dc143c;
+}
+
+/* Footer */
+.footer {
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 2px solid #dc143c;
+    margin-top: 3rem;
+}
+
+/* Boutons */
+.btn {
+    padding: 10px 20px;
+    border: 2px solid #000000;
+    background: transparent;
+    color: #000000;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.btn-red {
+    border-color: #dc143c;
+    color: #dc143c;
+}
+
+.btn-red:hover {
+    background: #dc143c;
+    color: #ffffff;
+}
+
+/* Cards */
+.card {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Grille de produits */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    background: #ffffff;
+}
+
+.product-card h5 {
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.product-card p {
+    margin-bottom: 1rem;
+    color: #6c757d;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #dc143c;
+    margin-bottom: 1rem;
+}
+
+.image-placeholder {
+    height: 200px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #6c757d;
+    font-size: 2rem;
+}
+
+/* Sections avec plus d'espace */
+.hero-section {
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    color: #f8f9fa;
+    font-size: 1.2rem;
+}
+
+.filter-section {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Espacements améliorés */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+section {
+    margin: 3rem 0;
+}
+
+/* Flex utilities */
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.btn-w-full {
+    width: 100%;
+}
+
+/* Toast notification */
+.toast-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.toast {
+    background: #ffffff;
+    border: 1px solid #dc143c;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: none;
+    min-width: 250px;
+}
+
+.toast.show {
+    display: block;
+}
+
+.toast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Styles pour le panier */
+.cart-items {
+    margin-bottom: 3rem;
+}
+
+.cart-item {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 2rem;
+}
+
+.btn-quantity {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #000000;
+    background: transparent;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.btn-quantity:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+.quantity {
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+}
+
+.item-total {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #dc143c;
+    margin: 0 2rem;
+    min-width: 100px;
+    text-align: right;
+}
+
+.btn-remove {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #dc143c;
+    background: transparent;
+    color: #dc143c;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.btn-remove:hover {
+    background: #dc143c;
+    color: #ffffff;
+}
+
+.cart-summary {
+    background: #f8f9fa;
+    padding: 2rem;
+    border: 1px solid #ddd;
+}
+
+.cart-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.cart-actions .btn {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Badge pour le compteur */
+.badge {
+    background: #dc143c;
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Utilitaires essentiels */
+.text-center {
+    text-align: center;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+.py-4 {
+    padding: 2rem 0;
+}
+
+/* Correction de l'espacement pour la page panier vide */
+.empty-cart {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.empty-cart h3 {
+    margin-bottom: 1.5rem;
+    color: #000000;
+}
+
+.empty-cart p {
+    margin-bottom: 2rem;
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.empty-cart .btn {
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .col-6 {
+        width: 100%;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .navbar-nav {
+        display: none;
+    }
+
+    /* Grille devient liste sur mobile */
+    .products-grid {
+        display: block;
+        gap: 0;
+    }
+
+    .product-card {
+        margin-bottom: 2rem;
+        padding: 1rem;
+    }
+
+    .hero-section {
+        padding: 2rem 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .cart-item .d-flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .quantity-controls,
+    .item-total {
+        margin: 0;
+        justify-content: center;
+    }
+
+    .cart-actions {
+        flex-direction: column;
+    }
+
+    .cart-actions .btn {
+        width: 100%;
+    }
 }

@@ -1,0 +1,59 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block page_title %}Guide d'utilisation - Administration{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Guide d'utilisation de l'interface d'administration</h3>
+                </div>
+                <div class="card-body">
+                    <h4>🛍️ Gestion des Produits</h4>
+                    <ul>
+                        <li><strong>Ajouter un produit :</strong> Cliquez sur "Nouveau Produit" depuis la section Produits</li>
+                        <li><strong>Modifier un produit :</strong> Cliquez sur l'icône d'édition dans la liste des produits</li>
+                        <li><strong>Supprimer un produit :</strong> Utilisez l'icône de suppression (confirmation requise)</li>
+                        <li><strong>Gérer les stocks :</strong> Modifiez le champ "Stock" lors de l'édition d'un produit</li>
+                    </ul>
+
+                    <h4>📋 Champs des Produits</h4>
+                    <ul>
+                        <li><strong>Nom :</strong> Nom affiché sur le site (requis)</li>
+                        <li><strong>Type :</strong> Catégorie (Vêtements ou Baskets) (requis)</li>
+                        <li><strong>Prix :</strong> Prix en euros (requis)</li>
+                        <li><strong>Stock :</strong> Quantité disponible (requis, min: 0, max: 9999)</li>
+                        <li><strong>Description :</strong> Description détaillée (optionnel)</li>
+                    </ul>
+
+                    <h4>🛒 Suivi des Commandes</h4>
+                    <ul>
+                        <li><strong>Paniers :</strong> Visualisation des paniers en cours</li>
+                        <li><strong>Articles Panier :</strong> Détail des articles dans chaque panier</li>
+                    </ul>
+
+                    <h4>👥 Gestion des Utilisateurs</h4>
+                    <ul>
+                        <li>Consultation et gestion des comptes utilisateurs</li>
+                        <li>Attribution des rôles (ROLE_USER, ROLE_ADMIN, etc.)</li>
+                    </ul>
+
+                    <h4>🎯 Actions Rapides</h4>
+                    <ul>
+                        <li><strong>Filtres :</strong> Utilisez les filtres pour rechercher rapidement</li>
+                        <li><strong>Tri :</strong> Cliquez sur les en-têtes de colonnes pour trier</li>
+                        <li><strong>Pagination :</strong> Navigation en bas de liste pour les grandes collections</li>
+                        <li><strong>Voir le site :</strong> Lien direct vers la boutique depuis le menu</li>
+                    </ul>
+
+                    <div class="alert alert-info mt-4">
+                        <strong>💡 Conseil :</strong> Pensez à vérifier régulièrement les stocks pour éviter les ruptures !
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

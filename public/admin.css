@@ -1,0 +1,60 @@
+/* Styles personnalisés pour EasyAdmin */
+:root {
+    --ea-primary-color: #dc3545; /* Rouge de notre charte */
+    --ea-secondary-color: #000000; /* Noir */
+    --ea-light-color: #ffffff; /* Blanc */
+}
+
+/* Override des couleurs principales d'EasyAdmin */
+.ea-sidebar {
+    background-color: var(--ea-secondary-color) !important;
+}
+
+.ea-sidebar .ea-menu-item.active {
+    background-color: var(--ea-primary-color) !important;
+}
+
+.ea-sidebar .ea-menu-item:hover {
+    background-color: rgba(220, 53, 69, 0.1) !important;
+}
+
+.btn-primary {
+    background-color: var(--ea-primary-color) !important;
+    border-color: var(--ea-primary-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: #c82333 !important;
+    border-color: #bd2130 !important;
+}
+
+.ea-navbar {
+    background-color: var(--ea-light-color) !important;
+    border-bottom: 2px solid var(--ea-primary-color) !important;
+}
+
+.ea-content-header {
+    background-color: var(--ea-light-color) !important;
+}
+
+.badge-success {
+    background-color: var(--ea-primary-color) !important;
+}
+
+/* Style pour les actions */
+.btn-outline-primary {
+    color: var(--ea-primary-color) !important;
+    border-color: var(--ea-primary-color) !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--ea-primary-color) !important;
+    border-color: var(--ea-primary-color) !important;
+}
+
+/* Style pour les alertes de succès */
+.alert-success {
+    background-color: rgba(220, 53, 69, 0.1) !important;
+    border-color: var(--ea-primary-color) !important;
+    color: var(--ea-secondary-color) !important;
+}

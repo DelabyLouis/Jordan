@@ -1,0 +1,96 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block page_title %}Tableau de bord - Administration{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>🎯 Tableau de bord de l'administration</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">🛍️ Produits</h5>
+                                    <p class="card-text">Gérer le catalogue de produits</p>
+                                    <a href="{{ ea_url().setController('App\\Controller\\Admin\\ProductCrudController') }}" class="btn btn-primary">Accéder</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">🛒 Paniers</h5>
+                                    <p class="card-text">Suivre les commandes en cours</p>
+                                    <a href="{{ ea_url().setController('App\\Controller\\Admin\\CartCrudController') }}" class="btn btn-primary">Accéder</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">👥 Utilisateurs</h5>
+                                    <p class="card-text">Gérer les comptes utilisateurs</p>
+                                    <a href="{{ ea_url().setController('App\\Controller\\Admin\\UserCrudController') }}" class="btn btn-primary">Accéder</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">📋 Articles</h5>
+                                    <p class="card-text">Détail des articles en panier</p>
+                                    <a href="{{ ea_url().setController('App\\Controller\\Admin\\CartItemCrudController') }}" class="btn btn-primary">Accéder</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                <h5>🚀 Actions rapides</h5>
+                                <div class="btn-group" role="group">
+                                    <a href="{{ ea_url().setController('App\\Controller\\Admin\\ProductCrudController').setAction('new') }}" class="btn btn-success">
+                                        ➕ Nouveau produit
+                                    </a>
+                                    <a href="{{ path('app_home') }}" class="btn btn-outline-primary" target="_blank">
+                                        👁️ Voir le site
+                                    </a>
+                                    <a href="{{ path('admin_help') }}" class="btn btn-outline-info">
+                                        ❓ Guide d'utilisation
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>📊 Statistiques rapides</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>🎯 Mission :</strong> Interface d'administration complète pour la gestion de votre boutique en ligne</p>
+                                    <ul>
+                                        <li>✅ Gestion des produits (CRUD complet)</li>
+                                        <li>✅ Suivi des paniers et commandes</li>
+                                        <li>✅ Gestion des utilisateurs</li>
+                                        <li>✅ Interface responsive et moderne</li>
+                                        <li>✅ Charte graphique cohérente</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

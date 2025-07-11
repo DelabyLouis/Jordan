@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier - Boutique{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="hero-section">
+        <h1>Mon Panier</h1>
+        <p>Récapitulatif de vos achats</p>
+    </div>
+
+    {% if cart.cartItems|length > 0 %}
+        <div class="cart-items">
+            {% for item in cart.cartItems %}
+                <div class="cart-item" data-item-id="{{ item.id }}">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="image-placeholder" style="width: 80px; height: 80px; margin-right: 1rem;">
+                            📷
+                        </div>
+                        <div class="flex-column" style="flex: 1;">
+                            <h5>{{ item.product.name }}</h5>
+                            <p>Type: {{ item.product.type|capitalize }}</p>
+                            <p class="product-price">{{ item.product.price|number_format(2, ',', ' ') }} €</p>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="btn btn-quantity" onclick="updateQuantity({{ item.id }}, {{ item.quantity - 1 }})">-</button>
+                            <span class="quantity">{{ item.quantity }}</span>
+                            <button class="btn btn-quantity" onclick="updateQuantity({{ item.id }}, {{ item.quantity + 1 }})">+</button>
+                        </div>
+                        <div class="item-total">
+                            {{ (item.product.price * item.quantity)|number_format(2, ',', ' ') }} €
+                        </div>
+                        <button class="btn btn-remove" onclick="removeItem({{ item.id }})">×</button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="cart-summary">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3>Total: <span class="product-price">{{ cart.totalPrice|number_format(2, ',', ' ') }} €</span></h3>
+            </div>
+            <div class="cart-actions">
+                <button class="btn btn-red" onclick="proceedToCheckout()">Procéder au paiement</button>
+                <button class="btn" onclick="clearCart()">Vider le panier</button>
+                <a href="{{ path('app_home') }}" class="btn">Continuer les achats</a>
+            </div>
+        </div>        {% else %}
+            <div class="empty-cart">
+                <h3>Votre panier est vide</h3>
+                <p>Ajoutez des produits pour commencer vos achats</p>
+                <a href="{{ path('app_home') }}" class="btn btn-red">Voir les produits</a>
+            </div>
+        {% endif %}
+</div>
+
+<!-- Toast notification -->
+<div class="toast-container">
+    <div id="cartToast" class="toast">
+        <div class="toast-header">
+            <strong>Panier</strong>
+            <button type="button" class="toast-close" onclick="hideToast()">&times;</button>
+        </div>
+        <div class="toast-body" id="toastMessage">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function updateQuantity(itemId, newQuantity) {
+            fetch(`/cart/update/${itemId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `quantity=${newQuantity}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    showToast(data.message);
+                }
+            });
+        }
+
+        function removeItem(itemId) {
+            fetch(`/cart/remove/${itemId}`, {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    showToast(data.message);
+                }
+            });
+        }
+
+        function clearCart() {
+            if (confirm('Êtes-vous sûr de vouloir vider le panier ?')) {
+                fetch('/cart/clear', {
+                    method: 'POST'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    }
+                });
+            }
+        }
+
+        function proceedToCheckout() {
+            alert('Fonctionnalité de paiement à implémenter');
+        }
+
+        function showToast(message) {
+            document.getElementById('toastMessage').textContent = message;
+            document.getElementById('cartToast').classList.add('show');
+            setTimeout(() => {
+                document.getElementById('cartToast').classList.remove('show');
+            }, 3000);
+        }
+
+        function hideToast() {
+            document.getElementById('cartToast').classList.remove('show');
+        }
+    </script>
+{% endblock %}
