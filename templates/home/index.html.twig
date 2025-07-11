@@ -34,8 +34,14 @@
             <div class="products-grid">
                 {% for product in products %}
                     <div class="product-card">
-                        <div class="image-placeholder">
-                            📷
+                        <div class="product-image">
+                            {% if product.type == 'baskets' %}
+                                <img src="{{ asset('images/Basket.png') }}" alt="{{ product.name }}" class="product-img">
+                            {% elseif product.type == 'vêtements' %}
+                                <img src="{{ asset('images/Tshirt.png') }}" alt="{{ product.name }}" class="product-img">
+                            {% else %}
+                                <img src="{{ asset('images/Tshirt.png') }}" alt="{{ product.name }}" class="product-img">
+                            {% endif %}
                         </div>
                         <h5>{{ product.name }}</h5>
                         <p>Type: {{ product.type|capitalize }}</p>

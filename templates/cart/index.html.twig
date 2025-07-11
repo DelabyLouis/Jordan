@@ -14,8 +14,14 @@
             {% for item in cart.cartItems %}
                 <div class="cart-item" data-item-id="{{ item.id }}">
                     <div class="d-flex align-items-center mb-3">
-                        <div class="image-placeholder" style="width: 80px; height: 80px; margin-right: 1rem;">
-                            📷
+                        <div class="product-image" style="width: 80px; height: 80px; margin-right: 1rem;">
+                            {% if item.product.type == 'baskets' %}
+                                <img src="{{ asset('images/Basket.png') }}" alt="{{ item.product.name }}" class="cart-product-img">
+                            {% elseif item.product.type == 'vêtements' %}
+                                <img src="{{ asset('images/Tshirt.png') }}" alt="{{ item.product.name }}" class="cart-product-img">
+                            {% else %}
+                                <img src="{{ asset('images/Tshirt.png') }}" alt="{{ item.product.name }}" class="cart-product-img">
+                            {% endif %}
                         </div>
                         <div class="flex-column" style="flex: 1;">
                             <h5>{{ item.product.name }}</h5>
